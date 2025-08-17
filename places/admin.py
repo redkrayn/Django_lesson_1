@@ -34,6 +34,8 @@ class PlacesAdmin(SortableAdminBase, admin.ModelAdmin):
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
     list_display = ('combined_info',)
+    raw_id_fields = ['place']
+    autocomplete_fields = ['place']
 
     def combined_info(self, obj):
         return f"{obj.sequence_number} {obj.place}"
