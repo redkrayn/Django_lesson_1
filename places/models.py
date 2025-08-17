@@ -22,6 +22,9 @@ class Place(models.Model):
         'Долгота'
     )
 
+    class Meta:
+        unique_together = [['title', 'short_description']]
+
     def __str__(self):
         return self.title
 
