@@ -10,8 +10,8 @@ def get_place_from_json(url):
     response = response.json()
     place, _ = Place.objects.get_or_create(
         title=response['title'],
-        description_short=response['description_short'],
-        description_long=response['description_long'],
+        short_description=response['description_short'],
+        long_description=response['description_long'],
         lng=response['coordinates']['lng'],
         lat=response['coordinates']['lat']
     )

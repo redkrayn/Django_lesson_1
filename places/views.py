@@ -39,8 +39,8 @@ def show_place(request, id):
     urls = [image.image.url for image in images]
     place_info = {
         'title': place.title,
-        'description_short': place.description_short,
-        'description_long': place.description_long,
+        'description_short': place.short_description,
+        'description_long': place.long_description,
         'coordinates': [place.lng, place.lat],
         'imgs': urls,
     }
