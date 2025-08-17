@@ -1,7 +1,14 @@
+import sys
+import time
+
 from django.core.management.base import BaseCommand
 from django.core.files.base import ContentFile
-from places.models import Place
 import requests
+
+from places.models import Place
+
+
+SlEEP_TIME = 60
 
 
 def get_place_from_json(url):
@@ -16,8 +23,17 @@ def get_place_from_json(url):
     )
 
     for image_number, image in enumerate(response['imgs'], start=0):
-        picture = requests.get(image)
-        picture.raise_for_status()
+        try:
+            picture = requests.get(image)
+            picture.raise_for_status()
+        except requests.exceptions.HTTPError:
+            sys.stderr.write(f'ошибка при загрузке картинки : {image}\n')
+            continue
+        except requests.exceptions.ConnectionError:
+            sys.stderr.write('Проблема с подключением к сети... Реконект через минуту\n')
+            time.sleep(SlEEP_TIME)
+            continue
+
         place.images.create(
             image=ContentFile(picture.content, f'{place.title}_{image_number}.jpg'),
             sequence_number=image_number
