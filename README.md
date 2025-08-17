@@ -17,8 +17,8 @@ pip install -r requirements.txt
 - `DEBUG` — дебаг-режим. Поставьте True, чтобы увидеть отладочную информацию в случае ошибки.
 - `DJANGO_SECRET_KEY` — секретный ключ проекта
 - `ALLOWED_HOSTS` — см [документацию Django](https://docs.djangoproject.com/en/3.1/ref/settings/#allowed-hosts).
-- `STATIC_URL` — название папки со статикой. Например `/static/`
-- `MEDIA_URL` — название папки с картинками. Например `/media/`
+- `STATIC_URL` — адресс по которому доступны статические файлы. Например `/static/`
+- `MEDIA_URL` — адресс по которому отоброжаются загруженные пользователем медиа файлы. Например `/media/`
 - `MEDIA_ROOT` — путь до папки с картинками.
 
 Создайте базу данных SQLite
