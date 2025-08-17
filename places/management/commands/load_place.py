@@ -12,8 +12,7 @@ def get_place_from_json(url):
         title=response['title'],
         short_description=response['description_short'],
         long_description=response['description_long'],
-        lng=response['coordinates']['lng'],
-        lat=response['coordinates']['lat']
+        defaults={'lng': response['coordinates']['lng'], 'lat': response['coordinates']['lat']}
     )
 
     for image_number, image in enumerate(response['imgs'], start=0):
