@@ -4,8 +4,8 @@ from django.utils.html import format_html
 from adminsortable2.admin import SortableStackedInline, SortableAdminBase
 
 
-IMAGE_WIDTH = 150
-IMAGE_HEIGHT = 150
+IMAGE_MAX_WIDTH = 150
+IMAGE_MAX_HEIGHT = 150
 
 
 class ImageInline(SortableStackedInline):
@@ -16,8 +16,8 @@ class ImageInline(SortableStackedInline):
         return format_html(
             '<img src="{url}" width="{width}" height={height} />',
             url=obj.image.url,
-            width=IMAGE_WIDTH,
-            height=IMAGE_HEIGHT,
+            max_width=IMAGE_MAX_WIDTH,
+            max_height=IMAGE_MAX_HEIGHT,
         )
 
 
