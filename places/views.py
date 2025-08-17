@@ -6,7 +6,7 @@ from .models import Place
 
 def show_point(request):
     places = Place.objects.all()
-    features_point = []
+    feature_points = []
 
     for place in places:
         features = {
@@ -21,11 +21,11 @@ def show_point(request):
                 'detailsUrl': reverse('place', args=[place.id])
             }
         }
-        features_point.append(features)
+        feature_points.append(features)
 
     points = {
         'type': 'FeatureCollection',
-        'features': features_point
+        'features': feature_points
     }
     data = {'points': points}
 
