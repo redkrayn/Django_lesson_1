@@ -14,7 +14,7 @@ class ImageInline(SortableStackedInline):
 
     def show_image(self, obj):
         return format_html(
-            '<img src="{url}" width="{width}" height={height} />',
+            '<img src="{url}" style="max-width:{max_width}px; max-height:{max_height}px" />',
             url=obj.image.url,
             max_width=IMAGE_MAX_WIDTH,
             max_height=IMAGE_MAX_HEIGHT,
